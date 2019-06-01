@@ -2,74 +2,57 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(int argc, char ** argv) {
+int main(int argc, char** argv) {
 
-    char square[5][5];
+    int row, col, i, j, k, NUM_ROWS, NUM_COLS;
+    char input[50], b;
+    
+
+    char matrix[5][5] = {
+        {'c', 'r', 'a', 'z', 'y'},
+        {'b', 'd', 'e', 'f', 'g'},
+        {'h', 'i', 'j', 'k', 'l'},
+        {'m', 'n', 'o', 'p', 's'},
+        {'t', 'u', 'v', 'w', 'x'}};
+
+
+    NUM_ROWS = 5;
+    NUM_COLS = 5;
+    for (row = 0; row < NUM_ROWS; row++) {
+        for (col = 0; col < NUM_COLS; col++) {
+            printf("%c ", matrix[row][col]);
+        }
+        
+        printf("\n"); // newline at the end of each row
+    }
+    
     int size;
-    char input[50];
-    char b;
-    int i,j,k;
-    //int dig1,dig2;
-    square[0][0] = 'c';
-    square[0][1] = 'r';
-    square[0][2] = 'a';
-    square[0][3] = 'z';
-    square[0][4] = 'y';
-    square[1][0] = 'b';
-    square[1][1] = 'd';
-    square[1][2] = 'e';
-    square[1][3] = 'f';
-    square[1][4] = 'g';
-    square[2][0] = 'h';
-    square[2][1] = 'i';
-    square[2][2] = 'j';
-    square[2][3] = 'k';
-    square[2][4] = 'l';
-    square[3][0] = 'm';
-    square[3][1] = 'n';
-    square[3][2] = 'o';
-    square[3][3] = 'p';
-    square[3][4] = 's';
-    square[4][0] = 't';
-    square[4][1] = 'u';
-    square[4][2] = 'v';
-    square[4][3] = 'w';
-    square[4][4] = 'x';
+    fgets(input, 50, stdin); // read numeric string in array
+    size = strlen(input); //  calculate its size
 
-
-
-    fgets(input, 50, stdin);    //read string from keyboard
-    size = strlen(input);       //calculate its length
-    if (input != NULL) {
+    while (input[i] != '\n') {
+        row = input[i] - '\0';
+        col = input[i + 1] - '\0';
 
       for ( i = 0; i < size; i++) {
         b = input[i];   // read letter from string
 
-        for ( j = 0; j < 5; j++) {
-
-          for ( k = 0; k < 5; k++) {
+        for (row = 0; row < NUM_ROWS; row++) {
+          for (col = 0; col < NUM_COLS; col++) {
             if(b == 'q'){
                 printf("32");
+                
             }
             
-            else if (b == square[j][k]) {
-                //if input letter matches with array element
-                //then print its location(j,k)
-                //int firstLetter = j + 1;
-                //int secondLetter = k + 1;
+            else if (b == matrix[j][k]) {
                 printf("%d%d", j, k);
                 break;
                 
             }
-
           }
-
         }
-
       }
-
     }
 
     return 0;
 }
-
